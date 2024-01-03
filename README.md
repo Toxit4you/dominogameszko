@@ -1,0 +1,2 @@
+# dominogameszko
+Bolon domino jatek
