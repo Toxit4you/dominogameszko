@@ -24,5 +24,10 @@ namespace dominogameszko
         {
             InitializeComponent();
         }
-    }
+
+		private void button_Click(object sender, RoutedEventArgs e)
+		{
+            MessageBox.Show("Megnyomtad a gombot G simul a G-hez papi! <3");
+		}
+	}
 }

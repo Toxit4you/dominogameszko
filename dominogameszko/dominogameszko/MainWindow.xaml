@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button x:Name = "button" Content = "Click Me"
+         HorizontalAlignment = "Left" Margin = "375,128,0,0"
+         VerticalAlignment = "Top" Width = "75" Click="button_Click"/>
+        <Label x:Name="fasz" Content="Fasz" HorizontalAlignment = "Left" Margin = "206,263,0,0"
+         VerticalAlignment = "Top" Width = "75"/>
     </Grid>
 </Window>
