@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 
 namespace dominogameszko
 {
-    internal class Player
+    internal class Board
     {
-        public int points;
-        private List<Domino> inhand_Dominoes;
-        public string name;
 
-
-
+        public int[,] size;
 
 
     }
