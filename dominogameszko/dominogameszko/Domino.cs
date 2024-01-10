@@ -8,5 +8,8 @@ namespace dominogameszko
 {
     internal class Domino
     {
+        public int[,] sides;
+        public bool vertical;
+        
     }
 }

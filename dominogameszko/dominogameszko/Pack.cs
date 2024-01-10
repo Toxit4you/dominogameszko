@@ -8,5 +8,7 @@ namespace dominogameszko
 {
     internal class Pack
     {
+       public Stack<Domino> leftover_Dominoes;
+
     }
 }
