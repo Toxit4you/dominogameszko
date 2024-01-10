@@ -10,6 +10,7 @@ namespace dominogameszko
     {
         public int[,] sides;
         public bool vertical;
+        //vau xd
         
     }
 }
