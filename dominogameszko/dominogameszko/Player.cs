@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace dominogameszko
 {
-    internal class Player
+    public class Player
     {
         public int points;
         private List<Domino> inhand_Dominoes;

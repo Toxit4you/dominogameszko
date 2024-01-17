@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace dominogameszko
 {
-    internal class Board
+    public class Board
     {
 
         public int[,] size;
