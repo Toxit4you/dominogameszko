@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace dominogameszko
 {
-    internal class Pack
+    public class Pack
     {
        public Stack<Domino> leftover_Dominoes;
 

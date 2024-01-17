@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace dominogameszko
 {
-    internal class Domino
+    public class Domino
     {
         public int[,] sides;
         public bool vertical;
