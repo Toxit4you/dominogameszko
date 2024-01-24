@@ -6,5 +6,19 @@
         xmlns:local="clr-namespace:dominogameszko"
         mc:Ignorable="d"
         Title="GameWindow" Height="auto" Width="auto" WindowState="Maximized">
-    <Grid x:Name="Table" ShowGridLines="True" Margin="160,39,175,61" Width="1000" Height="1000"/>
+    <Grid>
+        <DataGrid x:Name="Table" 
+                  AutoGenerateColumns="False"
+                  HeadersVisibility="None"
+                  IsReadOnly="True" 
+                  ColumnWidth="20"
+                  RowHeight="19"
+                  GridLinesVisibility="None"
+                  MaxWidth="1003"
+                  MaxHeight="957"
+                  SelectionMode="Single"
+                  SelectionUnit="Cell">
+            <DataGridCell Style="{StaticResource DataGridHover}"/>
+        </DataGrid>
+    </Grid>
 </Window>

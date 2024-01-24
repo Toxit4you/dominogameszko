@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Dynamic;
 
 namespace dominogameszko
 {
@@ -22,12 +23,41 @@ namespace dominogameszko
 		public GameWindow()
 		{
 			InitializeComponent();
+
+			int[,] matrix = new int[50, 50];
 			for (int i = 0; i < 50; i++)
 			{
-				Table.RowDefinitions.Add(new RowDefinition());
-				Table.ColumnDefinitions.Add(new ColumnDefinition());
+				for (int j = 0; j < 50; j++)
+				{
+					matrix[i, j] = i;
+				}
 			}
-		}
 
+			var rows = new List<dynamic>();
+
+			for (int i = 0; i < 50; i++)
+			{
+				dynamic row = new ExpandoObject();
+				var rowDict = (IDictionary<string, object>)row;
+
+				for (int j = 0; j < 50; j++)
+				{
+					rowDict[$"Column{j}"] = matrix[i, j];
+				}
+
+				rows.Add(row);
+			}
+
+			for (int i = 0; i < 50; i++)
+			{
+				Table.Columns.Add(new DataGridTextColumn
+				{
+					Header = $"Column {i}",
+					Binding = new Binding($"Column{i}")
+				});
+			}
+
+			Table.ItemsSource = rows;
+		}
 	}
 }
