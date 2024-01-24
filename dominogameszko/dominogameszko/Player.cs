@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace dominogameszko
@@ -77,11 +78,12 @@ namespace dominogameszko
             int smallY = 1;
 
             //position of the selected map tile
+            
+
             int posX = 2;
             int posY = 2;
-
-            Board board = new Board();
-
+            Board board= new Board();   
+            
             board.size[posY, posX] = selected_D.sides[smallY,smallX];//place the selected part of the domino
 
 
