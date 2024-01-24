@@ -59,9 +59,9 @@ namespace dominogameszko
 
         }
 
-        public void select()
+        public void select(int index)
         {
-            int index = 0;
+           
             //Index will be equal with the index of the inhand domino
             
             selected_D.sides = inhand_Dominoes[index].sides;
