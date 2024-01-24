@@ -19,7 +19,7 @@ namespace dominogameszko
 
 
             //12     01     00     20   
-            //00     02     21     10 XD Fasz
+            //00     02     21     10 XD Fasz XD
             
             if (domino[0,0] >0 && domino[0, 1] > 0)
             {
