@@ -24,21 +24,16 @@ namespace dominogameszko
             
             if (domino[0,0] >0 && domino[0, 1] > 0)
             {
-                int temp = domino[0, 1];
-
-                domino[0, 1] = domino[0, 0];
-                domino[1, 1] = temp;
-                domino[0, 0] = 0;
-            }
-            else if (domino[0, 1] > 0 && domino[1, 1] > 0)
-            {
-                int temp = domino[1, 1];
-
-                domino[1, 1] = domino[0, 1];
-                domino[1, 0] = temp;
+                domino[1, 0] = domino[0, 1];
                 domino[0, 1] = 0;
             }
-            else if (domino[1, 1] > 0 && domino[1, 0] > 0)
+            else if (domino[0, 0] > 0 && domino[1, 0] > 0)
+            {
+                domino[0, 1] = domino[0, 0];
+                domino[0, 0] = domino[1, 0];
+                domino[1, 0] = 0;
+			}
+            /*else if (domino[1, 1] > 0 && domino[1, 0] > 0)
             {
                 int temp = domino[1, 0];
 
@@ -53,7 +48,7 @@ namespace dominogameszko
                 domino[0, 0] = domino[1, 1];
                 domino[0, 1] = temp;
                 domino[1, 1] = 0;
-            }
+            }*/
 
             return domino; 
 
