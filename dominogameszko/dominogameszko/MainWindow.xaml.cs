@@ -27,7 +27,9 @@ namespace dominogameszko
 
 		private void button_Click(object sender, RoutedEventArgs e)
 		{
-            MessageBox.Show("Megnyomtad a gombot G simul a G-hez papi! <3");
-		}
+            GameWindow gameWindow = new GameWindow();
+            gameWindow.Show();
+            this.Close();
+        }
 	}
 }
