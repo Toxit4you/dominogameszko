@@ -58,6 +58,9 @@ namespace dominogameszko
 			}
 
 			Table.ItemsSource = rows;
+
+			Style hoverStyle = (Style)this.FindResource("DataGridHover");
+			Table.CellStyle = hoverStyle;
 		}
 	}
 }

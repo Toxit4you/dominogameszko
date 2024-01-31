@@ -18,7 +18,6 @@
                   MaxHeight="957"
                   SelectionMode="Single"
                   SelectionUnit="Cell">
-            <DataGridCell Style="{StaticResource DataGridHover}"/>
         </DataGrid>
     </Grid>
 </Window>
