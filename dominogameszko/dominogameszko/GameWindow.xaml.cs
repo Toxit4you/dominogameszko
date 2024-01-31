@@ -62,5 +62,22 @@ namespace dominogameszko
 			Style hoverStyle = (Style)this.FindResource("DataGridHover");
 			Table.CellStyle = hoverStyle;
 		}
+
+		private void Table_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+		{
+			System.Windows.Controls.Image imageBox = new System.Windows.Controls.Image();
+			imageBox.Width = 30;
+			BitmapImage bitmapImage = new BitmapImage();
+			bitmapImage.BeginInit();
+			bitmapImage.UriSource = new Uri("pack://application:,,,/Dominogameszko;component/Resources/toothless.png", UriKind.RelativeOrAbsolute);
+			bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+			bitmapImage.EndInit();
+			bitmapImage.Freeze();
+
+			imageBox.Source = bitmapImage;
+
+
+			//Table.SelectedCells.Add(imageBox);
+		}
 	}
 }

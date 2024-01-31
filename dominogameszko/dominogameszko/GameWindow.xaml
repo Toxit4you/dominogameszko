@@ -17,7 +17,17 @@
                   MaxWidth="1003"
                   MaxHeight="957"
                   SelectionMode="Single"
-                  SelectionUnit="Cell">
+                  SelectionUnit="Cell"
+                  MouseLeftButtonDown="Table_MouseLeftButtonDown">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Image">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding YourImagePath}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 </Window>
