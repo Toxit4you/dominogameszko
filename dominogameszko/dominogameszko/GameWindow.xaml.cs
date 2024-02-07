@@ -61,6 +61,7 @@ namespace dominogameszko
 
 			Style hoverStyle = (Style)this.FindResource("DataGridHover");
 			Table.CellStyle = hoverStyle;
+			Canvas.SetLeft(Table, 480);
 		}
 
 		private void Table_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -69,15 +70,27 @@ namespace dominogameszko
 			imageBox.Width = 30;
 			BitmapImage bitmapImage = new BitmapImage();
 			bitmapImage.BeginInit();
-			bitmapImage.UriSource = new Uri("pack://application:,,,/Dominogameszko;component/Resources/toothless.png", UriKind.RelativeOrAbsolute);
+			bitmapImage.UriSource = new Uri("pack://application:,,,/dominogameszko;component/Resources/domino_1.png", UriKind.RelativeOrAbsolute);
 			bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
 			bitmapImage.EndInit();
 			bitmapImage.Freeze();
 
 			imageBox.Source = bitmapImage;
+			System.Windows.Point position = e.GetPosition(this);
+			double xPosition = position.X - 480;
+			xPosition = Math.Floor(xPosition / 20);
+			xPosition *= 20;
+			Canvas.SetLeft(imageBox, xPosition + 480);
 
-
-			//Table.SelectedCells.Add(imageBox);
+			double yPosition = position.Y;
+			yPosition = Math.Floor(yPosition / 19);
+			yPosition *= 19;
+			Canvas.SetTop(imageBox, yPosition);
+			Canvas.SetZIndex(imageBox, 10);
+			imageBox.Width = 20.5;
+			imageBox.Height = 20.5;
+			GameWindowCanvas.Children.Add(imageBox);
 		}
+
 	}
 }

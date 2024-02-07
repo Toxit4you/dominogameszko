@@ -6,28 +6,22 @@
         xmlns:local="clr-namespace:dominogameszko"
         mc:Ignorable="d"
         Title="GameWindow" Height="auto" Width="auto" WindowState="Maximized">
-    <Grid>
+    <Window.DataContext>
+        <local:Board/>
+    </Window.DataContext>
+    <Canvas x:Name="GameWindowCanvas">
         <DataGrid x:Name="Table" 
                   AutoGenerateColumns="False"
                   HeadersVisibility="None"
                   IsReadOnly="True" 
-                  ColumnWidth="20"
+                  ColumnWidth="19"
                   RowHeight="19"
                   GridLinesVisibility="None"
                   MaxWidth="1003"
                   MaxHeight="957"
                   SelectionMode="Single"
                   SelectionUnit="Cell"
-                  MouseLeftButtonDown="Table_MouseLeftButtonDown">
-            <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Image">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding YourImagePath}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-    </Grid>
+                  MouseLeftButtonDown="Table_MouseLeftButtonDown"/>
+		<Label x:Name="teszt" Content="asd" Canvas.Right="0" Canvas.Bottom="0"/>
+	</Canvas>
 </Window>

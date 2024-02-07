@@ -63,6 +63,16 @@ namespace dominogameszko.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Asztal_BSZ {
+            get {
+                object obj = ResourceManager.GetObject("Asztal_BSZ", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap toothless {
             get {
                 object obj = ResourceManager.GetObject("toothless", resourceCulture);

@@ -113,5 +113,11 @@
   <ItemGroup>
     <Resource Include="Resources\toothless.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Asztal_BSZ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\domino_1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
