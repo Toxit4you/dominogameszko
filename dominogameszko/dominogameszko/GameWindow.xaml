@@ -22,6 +22,28 @@
                   SelectionMode="Single"
                   SelectionUnit="Cell"
                   MouseLeftButtonDown="Table_MouseLeftButtonDown"/>
-		<Label x:Name="teszt" Content="asd" Canvas.Right="0" Canvas.Bottom="0"/>
-	</Canvas>
+        
+        
+
+
+        <Grid ShowGridLines="True"
+              Canvas.Left="95"
+              Canvas.Bottom="130"
+              x:Name="turningMachine">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+
+        <Button x:Name="turnButton" 
+                Content="Forgatás"
+                Canvas.Bottom="80px"
+                Canvas.Left="150px" Click="turnButton_Click"/>
+        <Button Content="xd" Click="Button_Click"/>
+    </Canvas>
 </Window>

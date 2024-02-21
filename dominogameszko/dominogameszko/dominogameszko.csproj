@@ -119,5 +119,12 @@
   <ItemGroup>
     <Resource Include="Resources\domino_1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\domino_2.png" />
+    <Resource Include="Resources\domino_3.png" />
+    <Resource Include="Resources\domino_4.png" />
+    <Resource Include="Resources\domino_5.png" />
+    <Resource Include="Resources\domino_6.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
