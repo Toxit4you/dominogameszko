@@ -136,7 +136,7 @@ namespace dominogameszko
                     {
 						SetImageSource(domino2, asd[1, 0]);
 						Grid.SetColumn(domino2, j);
-						Grid.SetRow(domino2, j);
+						Grid.SetRow(domino2, i);
 						turningMachine.Children.Add(domino2);
 					}
                 }
