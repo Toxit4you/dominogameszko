@@ -37,36 +37,45 @@ namespace dominogameszko
 					matrix[i, j] = i;
 				}
 			}
-
-			var rows = new List<dynamic>();
-
+			var height = new GridLength(20);
+			var width = new GridLength(20);
 			for (int i = 0; i < 50; i++)
 			{
-				dynamic row = new ExpandoObject();
-				var rowDict = (IDictionary<string, object>)row;
+				Table.RowDefinitions.Add(new RowDefinition() {Height = height});
+				Table.ColumnDefinitions.Add(new ColumnDefinition() {Width = width });
+			}
 
+			
+			for (int i = 0; i < 50; i++)
+			{
 				for (int j = 0; j < 50; j++)
 				{
-					rowDict[$"Column{j}"] = matrix[i, j];
+					TextBlock textBlock = new TextBlock
+					{
+						Text = matrix[i, j].ToString(),
+						Height = 20,
+						Width = 20,
+						HorizontalAlignment = HorizontalAlignment.Center,
+						VerticalAlignment = VerticalAlignment.Center,
+					};
+					textBlock.Foreground = new SolidColorBrush(Colors.White);
+					int locali = i;
+					int localj = j;
+					textBlock.MouseDown += (sender, e) =>
+					{
+						PlaceDomino(locali, localj, Table);
+					};
+					Grid.SetRow(textBlock, i);
+					Grid.SetColumn(textBlock, j);
+
+					Table.Children.Add(textBlock);
 				}
-
-				rows.Add(row);
 			}
 
-			for (int i = 0; i < 50; i++)
-			{
-				Table.Columns.Add(new DataGridTextColumn
-				{
-					Header = $"Column {i}",
-					Binding = new Binding($"Column{i}")
-				});
-			}
 
-			Table.ItemsSource = rows;
-
-			Style hoverStyle = (Style)this.FindResource("DataGridHover");
+			/*Style hoverStyle = (Style)this.FindResource("DataGridHover");
 			Table.CellStyle = hoverStyle;
-			Canvas.SetLeft(Table, 480);
+			Canvas.SetLeft(Table, 480);*/
 			#endregion
 
 			asd[0, 0] = 1;
@@ -81,7 +90,7 @@ namespace dominogameszko
 			dsa[1, 1] = 0;
 		}
 
-        private void Table_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void PlaceDomino(int row,int column,Grid table)
 		{
 			System.Windows.Controls.Image imageBox = new System.Windows.Controls.Image();
 			imageBox.Width = 30;
@@ -91,22 +100,11 @@ namespace dominogameszko
 			bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
 			bitmapImage.EndInit();
 			bitmapImage.Freeze();
-
 			imageBox.Source = bitmapImage;
-			System.Windows.Point position = e.GetPosition(this);
-			double xPosition = position.X - 480;
-			xPosition = Math.Floor(xPosition / 20);
-			xPosition *= 20;
-			Canvas.SetLeft(imageBox, xPosition + 480);
 
-			double yPosition = position.Y;
-			yPosition = Math.Floor(yPosition / 19);
-			yPosition *= 19;
-			Canvas.SetTop(imageBox, yPosition);
-			Canvas.SetZIndex(imageBox, 10);
-			imageBox.Width = 20.5;
-			imageBox.Height = 20.5;
-			GameWindowCanvas.Children.Add(imageBox);
+			Grid.SetRow(imageBox, row);
+			Grid.SetColumn(imageBox, column);
+			table.Children.Add(imageBox);
 		}
 
         private void turnButton_Click(object sender, RoutedEventArgs e)

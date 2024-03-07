@@ -10,20 +10,10 @@
         <local:Board/>
     </Window.DataContext>
     <Canvas x:Name="GameWindowCanvas">
-        <DataGrid x:Name="Table" 
-                  AutoGenerateColumns="False"
-                  HeadersVisibility="None"
-                  IsReadOnly="True" 
-                  ColumnWidth="19"
-                  RowHeight="19"
-                  GridLinesVisibility="None"
-                  MaxWidth="1003"
-                  MaxHeight="957"
-                  SelectionMode="Single"
-                  SelectionUnit="Cell"
-                  MouseLeftButtonDown="Table_MouseLeftButtonDown"/>
-        
-        
+        <Grid x:Name="Table"
+              Canvas.Left="460"/>
+
+
 
 
         <Grid ShowGridLines="True"
