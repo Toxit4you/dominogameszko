@@ -10,16 +10,32 @@
         <local:Board/>
     </Window.DataContext>
     <Canvas x:Name="GameWindowCanvas">
-        <Grid x:Name="Table"
-              Canvas.Left="460"/>
+        <Grid x:Name="inhandDominoGrid"
+              ShowGridLines="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="55"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="55"/>
+                <RowDefinition Height="55"/>
+            </Grid.RowDefinitions>
+        </Grid>
 
 
+            <Grid x:Name="Table"
+              Canvas.Left="460"
+              ShowGridLines="True"/>
 
-
-        <Grid ShowGridLines="True"
+        <Grid x:Name="turningMachine"
+              ShowGridLines="True"
               Canvas.Left="95"
-              Canvas.Bottom="130"
-              x:Name="turningMachine">
+              Canvas.Bottom="130">
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="80"/>
@@ -34,6 +50,8 @@
                 Content="Forgatás"
                 Canvas.Bottom="80px"
                 Canvas.Left="150px" Click="turnButton_Click"/>
-        <Button Content="xd" Click="Button_Click"/>
+        
+        
+        
     </Canvas>
 </Window>

@@ -139,7 +139,6 @@ namespace dominogameszko
 					}
                 }
 			}
-
 		}
 		private void SetImageSource(Image domino,int number)
         {
