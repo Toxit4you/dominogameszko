@@ -28,7 +28,7 @@
         </Grid>
 
 
-            <Grid x:Name="Table"
+        <Grid x:Name="Table"
               Canvas.Left="460"
               ShowGridLines="True"/>
 

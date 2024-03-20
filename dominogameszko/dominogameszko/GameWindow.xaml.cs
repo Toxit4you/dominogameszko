@@ -28,55 +28,7 @@ namespace dominogameszko
 		public GameWindow()
 		{
 			InitializeComponent();
-            #region Create_datagrid
-            int[,] matrix = new int[50, 50];
-			for (int i = 0; i < 50; i++)
-			{
-				for (int j = 0; j < 50; j++)
-				{
-					matrix[i, j] = i;
-				}
-			}
-			var height = new GridLength(20);
-			var width = new GridLength(20);
-			for (int i = 0; i < 50; i++)
-			{
-				Table.RowDefinitions.Add(new RowDefinition() {Height = height});
-				Table.ColumnDefinitions.Add(new ColumnDefinition() {Width = width });
-			}
-
-			
-			for (int i = 0; i < 50; i++)
-			{
-				for (int j = 0; j < 50; j++)
-				{
-					TextBlock textBlock = new TextBlock
-					{
-						Text = matrix[i, j].ToString(),
-						Height = 20,
-						Width = 20,
-						HorizontalAlignment = HorizontalAlignment.Center,
-						VerticalAlignment = VerticalAlignment.Center,
-					};
-					textBlock.Foreground = new SolidColorBrush(Colors.White);
-					int locali = i;
-					int localj = j;
-					textBlock.MouseDown += (sender, e) =>
-					{
-						PlaceDomino(locali, localj, Table);
-					};
-					Grid.SetRow(textBlock, i);
-					Grid.SetColumn(textBlock, j);
-
-					Table.Children.Add(textBlock);
-				}
-			}
-
-
-			/*Style hoverStyle = (Style)this.FindResource("DataGridHover");
-			Table.CellStyle = hoverStyle;
-			Canvas.SetLeft(Table, 480);*/
-			#endregion
+			InitializeMainGrid();
 
 			asd[0, 0] = 1;
 			asd[1, 0] = 2;
@@ -89,10 +41,81 @@ namespace dominogameszko
 			dsa[0, 1] = 0;
 			dsa[1, 1] = 0;
 		}
+        private void InitializeMainGrid()
+        {
+			int[,] matrix = new int[50, 50];
+			for (int i = 0; i < 50; i++)
+			{
+				for (int j = 0; j < 50; j++)
+				{
+					matrix[i, j] = i;
+				}
+			}
+			var height = new GridLength(20);
+			var width = new GridLength(20);
+			for (int i = 0; i < 50; i++)
+			{
+				Table.RowDefinitions.Add(new RowDefinition() { Height = height });
+				Table.ColumnDefinitions.Add(new ColumnDefinition() { Width = width });
+			}
 
-        private void PlaceDomino(int row,int column,Grid table)
+
+
+			for (int i = 0; i < 50; i++)
+			{
+				for (int j = 0; j < 50; j++)
+				{
+					Border border = new Border
+					{
+						Background = new SolidColorBrush(Colors.White), // Default background
+						Height = 20,
+						Width = 20,
+						HorizontalAlignment = HorizontalAlignment.Center,
+						VerticalAlignment = VerticalAlignment.Center
+					};
+					border.MouseEnter += Border_MouseEnter;
+					border.MouseLeave += Border_MouseLeave;
+
+					TextBlock textBlock = new TextBlock
+					{
+						Text = matrix[i, j].ToString(),
+						HorizontalAlignment = HorizontalAlignment.Center,
+						VerticalAlignment = VerticalAlignment.Center,
+						Foreground = new SolidColorBrush(Colors.White)
+					};
+					textBlock.Visibility = Visibility.Hidden;
+
+					int locali = i, localj = j;
+					border.MouseDown += (sender, e) =>
+					{
+						PlaceDomino(locali, localj, Table);
+					};
+
+					border.Child = textBlock; // Add TextBlock to Border
+					Grid.SetRow(border, i);
+					Grid.SetColumn(border, j);
+					Table.Children.Add(border);
+				}
+			}
+		}
+		private void Border_MouseEnter(object sender, MouseEventArgs e)
 		{
-			System.Windows.Controls.Image imageBox = new System.Windows.Controls.Image();
+			if (sender is Border border)
+			{
+				border.Background = new SolidColorBrush(Colors.LightGray); // Change on hover
+			}
+		}
+		private void Border_MouseLeave(object sender, MouseEventArgs e)
+		{
+			if (sender is Border border)
+			{
+				border.Background = new SolidColorBrush(Colors.White); // Revert on mouse leave
+			}
+		}
+
+		private void PlaceDomino(int row,int column,Grid table)
+		{
+			Image imageBox = new Image();
 			imageBox.Width = 30;
 			BitmapImage bitmapImage = new BitmapImage();
 			bitmapImage.BeginInit();
