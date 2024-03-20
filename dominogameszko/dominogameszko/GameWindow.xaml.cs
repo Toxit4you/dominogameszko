@@ -30,8 +30,22 @@ namespace dominogameszko
 		public GameWindow()
 		{
 			InitializeComponent();
-            #region Create_datagrid
-            int[,] matrix = new int[50, 50];
+			InitializeMainGrid();
+
+			asd[0, 0] = 1;
+			asd[1, 0] = 2;
+			asd[0, 1] = 0;
+			asd[1, 1] = 0;
+
+			
+			dsa[0, 0] = 1;
+			dsa[1, 0] = 2;
+			dsa[0, 1] = 0;
+			dsa[1, 1] = 0;
+		}
+        private void InitializeMainGrid()
+        {
+			int[,] matrix = new int[50, 50];
 			for (int i = 0; i < 50; i++)
 			{
 				for (int j = 0; j < 50; j++)
@@ -43,35 +57,61 @@ namespace dominogameszko
 			var width = new GridLength(20);
 			for (int i = 0; i < 50; i++)
 			{
-				Table.RowDefinitions.Add(new RowDefinition() {Height = height});
-				Table.ColumnDefinitions.Add(new ColumnDefinition() {Width = width });
+				Table.RowDefinitions.Add(new RowDefinition() { Height = height });
+				Table.ColumnDefinitions.Add(new ColumnDefinition() { Width = width });
 			}
 
-			
+
+
 			for (int i = 0; i < 50; i++)
 			{
 				for (int j = 0; j < 50; j++)
 				{
-					TextBlock textBlock = new TextBlock
+					Border border = new Border
 					{
-						Text = matrix[i, j].ToString(),
+						Background = new SolidColorBrush(Colors.White), // Default background
 						Height = 20,
 						Width = 20,
 						HorizontalAlignment = HorizontalAlignment.Center,
-						VerticalAlignment = VerticalAlignment.Center,
+						VerticalAlignment = VerticalAlignment.Center
 					};
-					textBlock.Foreground = new SolidColorBrush(Colors.White);
-					int locali = i;
-					int localj = j;
-					textBlock.MouseDown += (sender, e) =>
+					border.MouseEnter += Border_MouseEnter;
+					border.MouseLeave += Border_MouseLeave;
+
+					TextBlock textBlock = new TextBlock
+					{
+						Text = matrix[i, j].ToString(),
+						HorizontalAlignment = HorizontalAlignment.Center,
+						VerticalAlignment = VerticalAlignment.Center,
+						Foreground = new SolidColorBrush(Colors.White)
+					};
+					textBlock.Visibility = Visibility.Hidden;
+
+					int locali = i, localj = j;
+					border.MouseDown += (sender, e) =>
 					{
 						PlaceDomino(locali, localj, Table);
 					};
-					Grid.SetRow(textBlock, i);
-					Grid.SetColumn(textBlock, j);
 
-					Table.Children.Add(textBlock);
+					border.Child = textBlock; // Add TextBlock to Border
+					Grid.SetRow(border, i);
+					Grid.SetColumn(border, j);
+					Table.Children.Add(border);
 				}
+			}
+		}
+		private void Border_MouseEnter(object sender, MouseEventArgs e)
+		{
+			if (sender is Border border)
+			{
+				border.Background = new SolidColorBrush(Colors.LightGray); // Change on hover
+			}
+		}
+		private void Border_MouseLeave(object sender, MouseEventArgs e)
+		{
+			if (sender is Border border)
+			{
+				border.Background = new SolidColorBrush(Colors.White); // Revert on mouse leave
 			}
 
 
@@ -90,43 +130,11 @@ namespace dominogameszko
 			dsa[1, 0] = 2;
 			dsa[0, 1] = 0;
 			dsa[1, 1] = 0;
-			Generate_Domino();
-
-        }
-		public void Generate_Domino()
-		{
-			int generation_exception=0;
-            Dominopacks.all_Dominoes = new List<Domino>();
-            for (int i = 1; i < 7; i++)
-			{
-				for (int j = 1; j < 7; j++)
-                {
-					if (i>generation_exception&&j>generation_exception)
-					{
-                        int[,] side = new int[2, 2];
-                        side[0, 0] = i;
-                        side[1, 0] = j;
-                        Domino seged = new Domino();
-                        seged.sides = side;
-                        seged.vertical = true;
-                      
-                        Dominopacks.all_Dominoes.Add(seged);
-  
-                    }
-                    
-
-                }
-				generation_exception += 1;
-				
-            }
-
-
-            
-        }
+		}
 
         private void PlaceDomino(int row,int column,Grid table)
 		{
-			System.Windows.Controls.Image imageBox = new System.Windows.Controls.Image();
+			Image imageBox = new Image();
 			imageBox.Width = 30;
 			BitmapImage bitmapImage = new BitmapImage();
 			bitmapImage.BeginInit();

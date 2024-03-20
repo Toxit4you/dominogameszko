@@ -64,38 +64,51 @@ namespace dominogameszko
 
         }
 
-		//index in the small matrix --V                   V-- position of the selected map tile
-		public void place(int smallY, int smallX, int posX, int posY) {
-
-			Board board = new Board();
-
-			board.size[posY, posX] = selected_D.sides[smallY, smallX];//place the selected part of the domino
-
-
-			//place down the  other half
-			if (selected_D.vertical == true)
+		//                         V-- position of the selected map tile
+		public Board place(int posX, int posY, Board board) 
+        {
+            bool goodtogo = true;
+			for (int i = 0; i < board.size.GetLength(0); i++)
 			{
-				if ( smallX > 0)
+				for (int j = 0; j < board.size.GetLength(1); j++)
 				{
-					board.size[posY, posX - 1] = selected_D.sides[smallY, smallX - 1];
-				}
-				else
-				{
-					board.size[posY, posX + 1] = selected_D.sides[smallY, smallX + 1];
+                    if (i == posY && j == posX)
+					{
+                        if (selected_D.vertical == true && board.size[i, j] != 0 || selected_D.vertical == true && board.size[i, j + 1] != 0)
+                        {
+                            goodtogo = false;
+                        }
+                        else if (selected_D.vertical == false && board.size[i, j] != 0 || selected_D.vertical == false && board.size[i + 1, j] != 0)
+                        {
+                            goodtogo = false;
+                        }
+                    }
 				}
 			}
-			else
+			if (goodtogo)
 			{
-				if (smallY > 0)
-				{
-					board.size[posY - 1, posX] = selected_D.sides[smallY - 1, smallX];
-				}
-				else
-				{
-					board.size[posY + 1, posX] = selected_D.sides[smallY + 1, smallX];
-				}
-			}
+			    board.size[posY, posX] = selected_D.sides[0, 0];//place the selected part of the domino
 
+
+			    //place down the  other half
+			    if (selected_D.vertical == true)
+			    {
+					    board.size[posY, posX + 1] = selected_D.sides[0, 1];
+			    }
+			    else
+			    {
+					    board.size[posY + 1, posX] = selected_D.sides[1, 0];
+		        }
+				for (int i = 0; i < inhand_Dominoes.Count; i++)
+				{
+					if (inhand_Dominoes[i] == selected_D)
+					{
+                        inhand_Dominoes.RemoveAt(i);
+					}
+				}
+                selected_D = null;
+			}
+            return board;
 		}
 
 	}
