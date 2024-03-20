@@ -25,6 +25,8 @@ namespace dominogameszko
 		Image domino2 = new Image();
 		int[,] asd = new int[2, 2];
 		int[,] dsa = new int[2, 2];
+
+		Board board = new Board();
 		public GameWindow()
 		{
 			InitializeComponent();
@@ -67,7 +69,7 @@ namespace dominogameszko
 				{
 					Border border = new Border
 					{
-						Background = new SolidColorBrush(Colors.White), // Default background
+						Background = new SolidColorBrush(Colors.White),
 						Height = 20,
 						Width = 20,
 						HorizontalAlignment = HorizontalAlignment.Center,
@@ -89,9 +91,11 @@ namespace dominogameszko
 					border.MouseDown += (sender, e) =>
 					{
 						PlaceDomino(locali, localj, Table);
+
+						player.place(locali, localj, board);
 					};
 
-					border.Child = textBlock; // Add TextBlock to Border
+					border.Child = textBlock;
 					Grid.SetRow(border, i);
 					Grid.SetColumn(border, j);
 					Table.Children.Add(border);
@@ -102,14 +106,14 @@ namespace dominogameszko
 		{
 			if (sender is Border border)
 			{
-				border.Background = new SolidColorBrush(Colors.LightGray); // Change on hover
+				border.Background = new SolidColorBrush(Colors.LightGray);
 			}
 		}
 		private void Border_MouseLeave(object sender, MouseEventArgs e)
 		{
 			if (sender is Border border)
 			{
-				border.Background = new SolidColorBrush(Colors.White); // Revert on mouse leave
+				border.Background = new SolidColorBrush(Colors.White);
 			}
 		}
 
@@ -171,7 +175,6 @@ namespace dominogameszko
 			bitmapImage.EndInit();
 			domino.Source = bitmapImage;
 		}
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 			SetImageSource(domino1, 1);
