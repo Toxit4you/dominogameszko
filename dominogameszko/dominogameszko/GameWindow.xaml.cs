@@ -25,6 +25,8 @@ namespace dominogameszko
 		Image domino2 = new Image();
 		int[,] asd = new int[2, 2];
 		int[,] dsa = new int[2, 2];
+		Pack Dominopacks= new Pack();
+		
 		public GameWindow()
 		{
 			InitializeComponent();
@@ -88,7 +90,39 @@ namespace dominogameszko
 			dsa[1, 0] = 2;
 			dsa[0, 1] = 0;
 			dsa[1, 1] = 0;
-		}
+			Generate_Domino();
+
+        }
+		public void Generate_Domino()
+		{
+			int generation_exception=0;
+            Dominopacks.all_Dominoes = new List<Domino>();
+            for (int i = 1; i < 7; i++)
+			{
+				for (int j = 1; j < 7; j++)
+                {
+					if (i>generation_exception&&j>generation_exception)
+					{
+                        int[,] side = new int[2, 2];
+                        side[0, 0] = i;
+                        side[1, 0] = j;
+                        Domino seged = new Domino();
+                        seged.sides = side;
+                        seged.vertical = true;
+                      
+                        Dominopacks.all_Dominoes.Add(seged);
+  
+                    }
+                    
+
+                }
+				generation_exception += 1;
+				
+            }
+
+
+            
+        }
 
         private void PlaceDomino(int row,int column,Grid table)
 		{
@@ -112,13 +146,13 @@ namespace dominogameszko
 			turningMachine.Children.Clear();
 			
 			player.turn(dsa);
-            for (int i = 0; i < 2; i++)
+            /*for (int i = 0; i < 2; i++)
             {
                 for (int j = 0; j < 2; j++)
                 {
                     Console.WriteLine(dsa[i,j]);
                 }
-            }
+            }*/
 			for (int i = 0; i < 2; i++)
 			{
                 for (int j = 0; j < 2; j++)

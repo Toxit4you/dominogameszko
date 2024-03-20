@@ -8,7 +8,7 @@ namespace dominogameszko
 {
     public class Domino
     {
-        public int[,] sides;
+        public int[,] sides=new int[2,2];
         public bool vertical;
         //vau xd
         
