@@ -16,40 +16,25 @@ namespace dominogameszko
         public string name;
 
         //I need to rewrite the turning method to make sure its working correctly, A vilag szep az eg kek
-        public int[,] turn(int[,] domino) {
+        public Domino turn(Domino domino) {
 
 
             //12     01     00     20   
             //00     02     21     10 XD Fasz XD
             
-            if (domino[0,0] >0 && domino[0, 1] > 0)
+            if (domino.sides[0,0] >0 && domino.sides[0, 1] > 0)
             {
-                domino[1, 0] = domino[0, 1];
-                domino[0, 1] = 0;
+                domino.sides[1, 0] = domino.sides[0, 1];
+                domino.sides[0, 1] = 0;
+                domino.vertical = false;
             }
-            else if (domino[0, 0] > 0 && domino[1, 0] > 0)
+            else if (domino.sides[0, 0] > 0 && domino.sides[1, 0] > 0)
             {
-                domino[0, 1] = domino[0, 0];
-                domino[0, 0] = domino[1, 0];
-                domino[1, 0] = 0;
+                domino.sides[0, 1] = domino.sides[0, 0];
+                domino.sides[0, 0] = domino.sides[1, 0];
+                domino.sides[1, 0] = 0;
+                domino.vertical = true;
 			}
-            /*else if (domino[1, 1] > 0 && domino[1, 0] > 0)
-            {
-                int temp = domino[1, 0];
-
-                domino[1, 0] = domino[1, 1];
-                domino[0, 0] = temp;
-                domino[1, 1] = 0;
-            }
-            else
-            {  
-                int temp = domino[0, 0];
-
-                domino[0, 0] = domino[1, 1];
-                domino[0, 1] = temp;
-                domino[1, 1] = 0;
-            }*/
-
             return domino; 
 
         }

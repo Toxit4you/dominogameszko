@@ -25,8 +25,13 @@ namespace dominogameszko
 		Image domino2 = new Image();
 		int[,] asd = new int[2, 2];
 		int[,] dsa = new int[2, 2];
+<<<<<<< HEAD
 
 		Board board = new Board();
+=======
+		Pack Dominopacks= new Pack();
+		
+>>>>>>> 9e5783f675511b4fdf9e941359a3c42fbd6bac6f
 		public GameWindow()
 		{
 			InitializeComponent();
@@ -115,9 +120,26 @@ namespace dominogameszko
 			{
 				border.Background = new SolidColorBrush(Colors.White);
 			}
+
+
+			/*Style hoverStyle = (Style)this.FindResource("DataGridHover");
+			Table.CellStyle = hoverStyle;
+			Canvas.SetLeft(Table, 480);*/
+			#endregion
+
+			asd[0, 0] = 1;
+			asd[1, 0] = 2;
+			asd[0, 1] = 0;
+			asd[1, 1] = 0;
+
+			
+			dsa[0, 0] = 1;
+			dsa[1, 0] = 2;
+			dsa[0, 1] = 0;
+			dsa[1, 1] = 0;
 		}
 
-		private void PlaceDomino(int row,int column,Grid table)
+        private void PlaceDomino(int row,int column,Grid table)
 		{
 			Image imageBox = new Image();
 			imageBox.Width = 30;
@@ -139,13 +161,13 @@ namespace dominogameszko
 			turningMachine.Children.Clear();
 			
 			player.turn(dsa);
-            for (int i = 0; i < 2; i++)
+            /*for (int i = 0; i < 2; i++)
             {
                 for (int j = 0; j < 2; j++)
                 {
                     Console.WriteLine(dsa[i,j]);
                 }
-            }
+            }*/
 			for (int i = 0; i < 2; i++)
 			{
                 for (int j = 0; j < 2; j++)

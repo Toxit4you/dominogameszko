@@ -9,6 +9,7 @@ namespace dominogameszko
     public class Pack
     {
        public Stack<Domino> leftover_Dominoes;
+       public List<Domino> all_Dominoes;
 
     }
 }
