@@ -65,7 +65,7 @@ namespace dominogameszko
         }
 
 		//                         V-- position of the selected map tile
-		public void place(int posX, int posY, Board board) 
+		public Board place(int posX, int posY, Board board) 
         {
             bool goodtogo = true;
 			for (int i = 0; i < board.size.GetLength(0); i++)
@@ -108,7 +108,7 @@ namespace dominogameszko
 				}
                 selected_D = null;
 			}
-
+            return board;
 		}
 
 	}
