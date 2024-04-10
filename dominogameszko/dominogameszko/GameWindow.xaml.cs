@@ -29,6 +29,8 @@ namespace dominogameszko
 //<<<<<<< HEAD
 
 		Board board = new Board();
+		Domino domino = new Domino();
+		
 //=======
 		
 		
@@ -37,17 +39,17 @@ namespace dominogameszko
 		{
 			InitializeComponent();
 			InitializeMainGrid();
-
-			asd[0, 0] = 1;
-			asd[1, 0] = 2;
-			asd[0, 1] = 0;
-			asd[1, 1] = 0;
-
-			
-			dsa[0, 0] = 1;
+			dsa[0, 0] = 6;
 			dsa[1, 0] = 2;
 			dsa[0, 1] = 0;
 			dsa[1, 1] = 0;
+			domino.sides = dsa;
+			domino.vertical = false;
+			player.selected_D = domino;
+			asd[0, 0] = 6;
+			asd[1, 0] = 2;
+			asd[0, 1] = 0;
+			asd[1, 1] = 0;
 		}
         private void InitializeMainGrid()
         {
@@ -96,7 +98,7 @@ namespace dominogameszko
 					int locali = i, localj = j;
 					border.MouseDown += (sender, e) =>
 					{
-						PlaceDomino(locali, localj, Table);
+						//PlaceDomino(locali, localj, Table);
 
 						player.place(locali, localj, board);
 					};
@@ -121,11 +123,6 @@ namespace dominogameszko
 			{
 				border.Background = new SolidColorBrush(Colors.White);
 			}
-
-
-			
-
-			
 		}
         public void Generate_Domino()
         {
@@ -154,7 +151,16 @@ namespace dominogameszko
 
             }
         }
-
+		private void refreshGrid()
+        {
+            for (int i = 0; i < 50; i++)
+            {
+                for (int j = 0; j < 50; j++)
+                {
+					
+                }
+            }
+        }
         private void PlaceDomino(int row,int column,Grid table)
 		{
 			Image imageBox = new Image();
@@ -176,27 +182,29 @@ namespace dominogameszko
         {
 			turningMachine.Children.Clear();
 			
-		//	player.turn(dsa);
-            /*for (int i = 0; i < 2; i++)
+			player.turn(domino);
+            for (int i = 0; i < 2; i++)
             {
                 for (int j = 0; j < 2; j++)
                 {
-                    Console.WriteLine(dsa[i,j]);
+                    Console.WriteLine(domino.sides[i,j]);
                 }
-            }*/
+            }
 			for (int i = 0; i < 2; i++)
 			{
                 for (int j = 0; j < 2; j++)
                 {
-                    if (dsa[i,j]==asd[0,0])
+					if (domino.sides[i,j]==asd[0,0])
                     {
+                        Console.WriteLine("belepett");
 						SetImageSource(domino1, asd[0, 0]);
 						Grid.SetColumn(domino1, j);
 						Grid.SetRow(domino1, i);
 						turningMachine.Children.Add(domino1);
 					}
-					else if(dsa[i, j] == asd[1, 0])
+					else if(domino.sides[i, j] == asd[1, 0])
                     {
+						Console.WriteLine("belepett2");
 						SetImageSource(domino2, asd[1, 0]);
 						Grid.SetColumn(domino2, j);
 						Grid.SetRow(domino2, i);

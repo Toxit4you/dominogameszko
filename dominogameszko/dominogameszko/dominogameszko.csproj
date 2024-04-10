@@ -126,5 +126,8 @@
     <Resource Include="Resources\domino_5.png" />
     <Resource Include="Resources\domino_6.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Logo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

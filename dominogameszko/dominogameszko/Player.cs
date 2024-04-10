@@ -84,14 +84,14 @@ namespace dominogameszko
 			    {
 					    board.size[posY + 1, posX] = selected_D.sides[1, 0];
 		        }
-				for (int i = 0; i < inhand_Dominoes.Count; i++)
+				/*for (int i = 0; i < inhand_Dominoes.Count; i++)
 				{
 					if (inhand_Dominoes[i] == selected_D)
 					{
                         inhand_Dominoes.RemoveAt(i);
 					}
 				}
-                selected_D = null;
+                selected_D = null;*/
 			}
             return board;
 		}
