@@ -151,13 +151,70 @@ namespace dominogameszko
 
             }
         }
-		private void refreshGrid()
+		private string sourcebyvalue(int value)
         {
-            for (int i = 0; i < 50; i++)
+			//0= empty, 1-6=domino value,7=placable,8=ASZ,9=BAS,10=BSZ,11=BFS,12=FSZ,13=JFS,14=JSZ,15=JAS
+			switch (value)
             {
-                for (int j = 0; j < 50; j++)
+				case 0:
+					return "Asztal_K.png";
+					break;
+				case 1:
+					return "domino_1.png";
+					break;
+				case 2:
+					return "domino_2.png";
+					break;
+				case 3:
+					return "domino_3.png";
+					break;
+				case 4:
+					return "domino_4.png";
+					break;
+				case 5:
+					return "domino_5.png";
+					break;
+				case 6:
+					return "domino_6.png";
+					break;
+				case 8:
+					return "Asztal_ASZ.png";
+					break;
+				case 9:
+					return "Asztal_BAS.png";
+					break;
+				case 10:
+					return "Asztal_BSZ.png";
+					break;
+				case 11:
+					return "Asztal_BFS.png";
+					break;
+				case 12:
+					return "Asztal_FSZ.png";
+					break;
+				case 13:
+					return "Asztal_JFS.png";
+					break;
+				case 14:
+					return "Asztal_JSZ.png";
+					break;
+				case 15:
+					return "Asztal_JAS.png";
+					break;
+				default:
+					return "toothless.jpg";
+			}
+        }
+		private void refreshGrid(Board board, Grid table)
+        {
+            for (int i = 0; i < board.values.GetLength(0); i++)
+            {
+                for (int j = 0; j < board.values.GetLength(1); j++)
                 {
-					
+					if (board.values[j, i] != 0 && board.values[j, i] < 7)
+                    {
+						PlaceDomino(i, j, table);
+                    }
                 }
             }
         }

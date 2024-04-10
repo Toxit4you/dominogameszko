@@ -129,5 +129,17 @@
   <ItemGroup>
     <Resource Include="Logo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Asztal_ASZ.png" />
+    <Resource Include="Resources\Asztal_BAS.png" />
+    <Resource Include="Resources\Asztal_BFS.png" />
+    <Resource Include="Resources\Asztal_FSZ.png" />
+    <Resource Include="Resources\Asztal_JAS.png" />
+    <Resource Include="Resources\Asztal_JFS.png" />
+    <Resource Include="Resources\Asztal_JSZ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Asztal_K.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

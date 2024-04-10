@@ -53,17 +53,17 @@ namespace dominogameszko
 		public Board place(int posX, int posY, Board board) 
         {
             bool goodtogo = true;
-			for (int i = 0; i < board.size.GetLength(0); i++)
+			for (int i = 0; i < board.values.GetLength(0); i++)
 			{
-				for (int j = 0; j < board.size.GetLength(1); j++)
+				for (int j = 0; j < board.values.GetLength(1); j++)
 				{
                     if (i == posY && j == posX)
 					{
-                        if (selected_D.vertical == true && board.size[i, j] != 0 || selected_D.vertical == true && board.size[i, j + 1] != 0)
+                        if (selected_D.vertical == true && board.values[i, j] != 0 && board.values[i, j] < 7 || selected_D.vertical == true && board.values[i, j + 1] != 0 && board.values[i, j + 1] < 7)
                         {
                             goodtogo = false;
                         }
-                        else if (selected_D.vertical == false && board.size[i, j] != 0 || selected_D.vertical == false && board.size[i + 1, j] != 0)
+                        else if (selected_D.vertical == false && board.values[i, j] != 0 && board.values[i, j] < 7 || selected_D.vertical == false && board.values[i + 1, j] != 0 && board.values[i + 1, j] < 7)
                         {
                             goodtogo = false;
                         }
@@ -72,17 +72,17 @@ namespace dominogameszko
 			}
 			if (goodtogo)
 			{
-			    board.size[posY, posX] = selected_D.sides[0, 0];//place the selected part of the domino
+			    board.values[posY, posX] = selected_D.sides[0, 0];//place the selected part of the domino
 
 
 			    //place down the  other half
 			    if (selected_D.vertical == true)
 			    {
-					    board.size[posY, posX + 1] = selected_D.sides[0, 1];
+					    board.values[posY, posX + 1] = selected_D.sides[0, 1];
 			    }
 			    else
 			    {
-					    board.size[posY + 1, posX] = selected_D.sides[1, 0];
+					    board.values[posY + 1, posX] = selected_D.sides[1, 0];
 		        }
 				/*for (int i = 0; i < inhand_Dominoes.Count; i++)
 				{
