@@ -9,7 +9,7 @@ namespace dominogameszko
     public class Board
     {
 
-        public int[,] size;
+        public int[,] size = new int[50, 50];
         //0= empty, 1-6=domino value,7=placable,8=map border
     }
 }
